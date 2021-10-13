@@ -1,11 +1,12 @@
 Package.RequirePackage("nanos-world-sandbox")
+--Package.Require("SpawnMenu.lua")
 
 
-Player.Unsubscribe("Spawn")
+--Player.Unsubscribe("Spawn")
 Package.Unsubscribe("Load")
 Character.Unsubscribe("Respawn")
 
---Package.RequirePackage("nanos-battlefield-hackspawn")
+
 
 
 
@@ -28,11 +29,11 @@ Player.Subscribe("Spawn", function(new_player)
 end)
 --]]
 Package.Subscribe("Load", function()
-    Package.Log("test")
+    Package.Log("Load Nanos Battlefield 2043")
 end)
 
 Package.Subscribe("Unload", function()
-    Package.Log("test")
+    Package.Log("Unload Nanos Battlefield 2043")
 end)
 
 Character.Subscribe("Respawn", function(character)
