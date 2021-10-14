@@ -1,12 +1,41 @@
 <html>
     <head>
-        <script src="index.js"></script>
-    </head>
+		<!-- Includes all files we created (JS and CSS) -->
+		<script src="index.js"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+	</head>
     <body>
         <div id="health_container">
-			<img src="images/health.png">
 			<!-- Health value -->
-			<span id="health_current">100000</span>
+            <span id="health_current">100</span>
 		</div>
+
+        <div id="armor_container">
+			<!-- Health value -->
+            <span id="armor_current">10</span>
+		</div>
+
+        <div id = "mainScore">
+
+            <div id="scoreTimeLimit">
+                <!-- enemy for score value -->
+                <span id="scoreTime">44:33</span>
+            </div>
+
+            <div id="scoreEnemy_container">
+                <!-- enemy for score value -->
+                <span id="scoreEnemyPoints_current">10000</span>
+                <span id="scoreEnemyTeam_current">US</span>
+            </div>
+
+            <div id="scoreFriendly_container">
+                <!-- friendly for score value -->
+                <span id="scoreFriendlyPoints_current">10000</span>
+                <span id="scoreFriendlyTeam_current">RU</span>
+            </div>
+        </div>
     </body>
 </html>
