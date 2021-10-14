@@ -133,14 +133,18 @@ body {
 
 
 #health_container {
-	position: absolute;
-	bottom: 30px;
-	left: 970px;
-	height: 150px;
-	background-color: #f3f3f300;
-	line-height: 60px;
-	padding: 0px 10px;
-	min-width: 90px;
+	width: 400px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(53, 230, 9);
+
+    position: fixed;
+  	left: 50%;
+  	bottom: 60px;
+  	transform: translate(-50%, -50%);
+  	margin: 0 auto;
 }
 
 #health_container img {
@@ -153,50 +157,64 @@ body {
 	font-size: 25px;
     color: green;
 	font-weight: bold;
+	text-shadow: -1px -1px 0 rgb(16, 212, 42), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     height: 25px;
+	
+	position: fixed;
+  	right: 20%;
+  	bottom: 10px;
+  	transform: translate(-50%, -50%);
+  	margin: 0 auto;
 }
 
 
 #armor_container {
-	position: absolute;
-	bottom: 30px;
-	left: 900px;
-	height: 150px;
-	background-color: #f3f3f300;
-	line-height: 60px;
-	padding: 0px 10px;
-	min-width: 90px;
+	width: 400px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	text-shadow: -1px -1px 0 rgb(13, 17, 218), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background: rgb(9, 13, 230);
+
+    position: fixed;
+  	left: 50%;
+  	bottom: 70px;
+  	transform: translate(-50%, -50%);
+  	margin: 0 auto;
 }
 
 #armor_current {
 	font-size: 25px;
     color: rgb(4, 8, 224);
 	font-weight: bold;
-    height: 25px;
+	text-shadow: -1px -1px 0 rgb(5, 20, 219), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	height: 25px;
+
+	position: fixed;
+  	right: 50%;
+  	bottom: 0px;
+  	transform: translate(-50%, -50%);
+  	margin: 0 auto;
+
 }
 
-#armor_container {
-	position: absolute;
-	bottom: 30px;
-	left: 900px;
-	height: 150px;
-	background-color: #f3f3f300;
-	line-height: 60px;
-	padding: 0px 10px;
-	min-width: 90px;
-}
 
 
 #mainScore{
 
-  
-    text-align: center;
+  	text-align: center;
     justify-content: center;
     position: relative;
     top: 10px;
   
-    
+}
 
+#mainHealthAndArmorHUD{
+	text-align: center;
+    justify-content: center;
+    position: relative;
+    
 }
 
 

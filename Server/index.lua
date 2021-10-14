@@ -2,7 +2,7 @@ Package.RequirePackage("nanos-world-sandbox")
 --Package.Require("SpawnMenu.lua")
 
 
---Player.Unsubscribe("Spawn")
+Player.Unsubscribe("Spawn")
 Package.Unsubscribe("Load")
 Character.Unsubscribe("Respawn")
 
