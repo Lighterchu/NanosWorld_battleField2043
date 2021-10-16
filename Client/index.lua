@@ -5,7 +5,7 @@ Client.Subscribe("Tick", function(delta_time)
     end
     ]]
     BattlefieldUpdateHealth(100)
-    BattlefieldUpdateArmor(10)
+    BattlefieldUpdateArmor(100)
 end)
 
 MyBattlefieldHUD = WebUI("My UI", "file:///UI/index.html")
