@@ -1,3 +1,5 @@
+Package.Require("Scoreboard.lua")
+
 MyBattlefieldHUD = WebUI("My UI", "file:///Ui/index.html")
 
 Package.Subscribe("Load", function()
@@ -8,6 +10,10 @@ Package.Subscribe("Load", function()
 		local_player:Subscribe("Possess", function(player, character)
 			UpdateLocalCharacter(character)
 		end)
+	end
+
+	for k, player in pairs(Player.GetAll()) do
+		UpdatePlayerScoreboard(player)
 	end
 end)
 

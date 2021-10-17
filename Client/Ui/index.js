@@ -4,6 +4,63 @@ Events.Subscribe("BattleFieldUpdateHealth", UpdateHealth);
 //Events.Subscribe("BattleFieldUpdateArmor", UpdateArmor);
 //Events.Subscribe("BattleFieldUpdateTime", UpdateTime);
 Events.Subscribe("BattleFieldUpdateAmmo", UpdateWeaponAmmo);
+//using the nanos sandbox one for now just so I can test the ranks 
+Events.Subscribe("ToggleScoreboard", ToggleScoreboard);
+Events.Subscribe("UpdatePlayer", UpdatePlayer);
+
+
+function ToggleScoreboard(enable) {
+	const scoreboard = document.querySelector("#scoreboard");
+
+	if (enable)
+		scoreboard.style.display = "block";
+	else
+		scoreboard.style.display = "none";
+}
+
+function UpdatePlayer(id, active, name, rank, ping) {
+	const existing_scoreboard_entry = document.querySelector(`#scoreboard_entry_id${id}`);
+
+	if (active) {
+		if (existing_scoreboard_entry) {
+			const scoreboard_ping = existing_scoreboard_entry.querySelector("td.scoreboard_ping");
+			scoreboard_ping.innerHTML = ping;
+			return;
+		}
+
+		const scoreboard_entry_tr = document.createElement("tr");
+		scoreboard_entry_tr.id = `scoreboard_entry_id${id}`;
+
+		const scoreboard_entry_td_id = document.createElement("td");
+		scoreboard_entry_td_id.className = "scoreboard_id";
+		scoreboard_entry_td_id.innerHTML = id;
+		scoreboard_entry_tr.appendChild(scoreboard_entry_td_id);
+		
+		const scoreboard_entry_td_name = document.createElement("td");
+		scoreboard_entry_td_name.className = "scoreboard_name";
+		scoreboard_entry_td_name.innerHTML = name;
+		scoreboard_entry_tr.appendChild(scoreboard_entry_td_name);
+
+        const scoreboard_entry_td_rank = document.createElement("td");
+		scoreboard_entry_td_rank.className = "scoreboard_rank";
+		scoreboard_entry_td_rank.innerHTML = rank;
+		scoreboard_entry_tr.appendChild(scoreboard_entry_td_rank);
+		
+        const scoreboard_entry_td_ping = document.createElement("td");
+		scoreboard_entry_td_ping.className = "scoreboard_ping";
+		scoreboard_entry_td_ping.innerHTML = ping;
+		scoreboard_entry_tr.appendChild(scoreboard_entry_td_ping);
+		
+
+		document.querySelector("#scoreboard_tbody").prepend(scoreboard_entry_tr);
+	} else {
+		if (!existing_scoreboard_entry)
+			return;
+
+		existing_scoreboard_entry.remove();
+	}
+}
+
 
 
 function UpdateWeaponAmmo(enable, clip, bag) {
