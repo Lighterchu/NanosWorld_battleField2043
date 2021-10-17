@@ -154,7 +154,7 @@ body {
 }
 
 #health_current {
-	font-size: 25px;
+	font-size: 2vh;
 	color: green;
 	font-weight: bold;
 	text-shadow: -1px -1px 0 rgb(16, 212, 42), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -186,7 +186,7 @@ body {
 }
 
 #armor_current {
-	font-size: 25px;
+	font-size: 2vh;
 	color: rgb(4, 8, 224);
 	font-weight: bold;
 	text-shadow: -1px -1px 0 rgb(5, 20, 219), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -331,29 +331,68 @@ body {
 /* loadout UI */
 #mainLoadoutUI{
 	width: 10%;
-	height: 20%;
-	
+	height: 50%;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	color: rgb(9, 215, 230);
 
 	position: relative;
-	top: 55%;
+	top: 40%;
 	right: 2%;
 	float: right;
 	margin: auto 0;
 	
 	
 }
-#ammo_current{
+#clip_current{
+	font-size: 3vh;
+
 	position: absolute;
+	left: 60%;
+	top: 40%;
+}
+
+#mag_current{
+	font-size: 2vh;
+
+	position: absolute;
+	left: 69%;
+	top:52%;
+}
+
+#guntitle_current{
+	font-size: 1.5vh;
+
+	position: absolute;
+	left: 64%;
+	top:30%;
 }
 
 #loadoutUIContainer{
 	width:100%;
-	height: 80%;
-	background: blue;
+	height: 50%;
+	background: rgba(12, 197, 221, 0.5);
 	
 
 	position: absolute;
 	top: 20%;
+}
+
+#primaryGunUIContainer{
+	width:50%;
+	height: 10%;
+	background: rgb(8, 132, 233,0.9);
+
+	position: absolute;
+	top: 20%;
+}
+#secondayGunUIContainer{
+	width:47%;
+	height: 10%;
+	background: rgba(8, 132, 233, 0.541);
+
+	position: absolute;
+	top: 20%;
+	left: 52%;
 }
 
 

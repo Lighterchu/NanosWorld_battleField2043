@@ -30,9 +30,22 @@ function UpdateTime(time) {
 	//document.querySelector("#health_container").style.backgroundColor = health <= 25 ? "#ff05053d" : "#0000003d";
 }
 
-function UpdateAmmo(mag) {
-	// Overrides the HTML content of the SPAN with the new health value
-	document.querySelector("#ammo_current").innerHTML = mag;
+function UpdateAmmo(clip,mag) {
+
+	if(clip >= 100) {
+		clip = clip
+	}else if( clip <= 100 && clip > 0)  {
+		clip = "0" + clip 
+	}else {
+		clip = 0
+	}
+	
+	if(mag <= 0){
+		mag = 0
+	}
+	
+	document.querySelector("#clip_current").innerHTML = clip;
+	document.querySelector("#mag_current").innerHTML = mag;
 
 	//Bonus: make the background red when health below 25
 	//document.querySelector("#health_container").style.backgroundColor = health <= 25 ? "#ff05053d" : "#0000003d";
