@@ -30,6 +30,7 @@ end)
 --]]
 Package.Subscribe("Load", function()
     Package.Log("Load Nanos Battlefield 2043")
+    Package.Log("Loaded Nanos Battlefield Classes")
 end)
 
 Package.Subscribe("Unload", function()

@@ -1,3 +1,4 @@
+
 local bullets = 1000
 
 Client.Subscribe("Tick", function(delta_time)   
@@ -7,7 +8,7 @@ Client.Subscribe("Tick", function(delta_time)
     end
     ]]
     bullets = bullets - 1
-
+    --Package.Log(assault.name)
     BattlefieldUpdateHealth(100)
     BattlefieldUpdateArmor(100)
     BattlefieldUpdateAmmo(100)
