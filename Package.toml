@@ -3,11 +3,11 @@
     # package name
     name =                 "nanos-battlefield-2043"
     # contributors
-    author =               ""
+    author =               "Trevor & LighterChu"
     # version
     version =              "0.0.1"
     # image URL
-    image =                ""
+    image =                "https://i.imgur.com/g0wSZYj.png"
     # package type: 'script' (normal package), 'game-mode' (unique package - can only load one at a time) or 'loading-screen' (special package loaded in loading screen)
     type =                 "script"
     # whether to force the custom map Script to do not load
