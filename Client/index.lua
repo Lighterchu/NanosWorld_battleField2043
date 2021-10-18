@@ -4,10 +4,11 @@ MyBattlefieldHUD = WebUI("My UI", "file:///Ui/index.html")
 
 Package.Subscribe("Load", function()
     Package.Log("Battlefield 2043 loaded")
-	local local_player = Client.GetLocalPlayer()
-	if (local_player ~= nil) then
-		UpdateLocalCharacter(local_player:GetControlledCharacter())
-		local_player:Subscribe("Possess", function(player, character)
+	local local_ply = Client.GetLocalPlayer()
+	if (local_ply ~= nil) then
+		SetPlayerRank(local_ply,1)
+		UpdateLocalCharacter(local_ply:GetControlledCharacter())
+		local_ply:Subscribe("Possess", function(player, character)
 			UpdateLocalCharacter(character)
 		end)
 	end
@@ -18,8 +19,7 @@ Package.Subscribe("Load", function()
 end)
 
 function UpdateLocalCharacter(character)
-    
-	if (character == nil) then return end
+    if (character == nil) then return end
 	UpdateHealth(character:GetHealth())
 	character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator, causer)
 		Sound(Vector(), "nanos-world::A_HitTaken_Feedback", true)
@@ -62,6 +62,13 @@ function UpdateLocalCharacter(character)
 	end)
 end
 
+ 
+
+function SetPlayerRank(character,rank)
+	if (character == nil) then return end
+	character:SetValue("Rank",Assault.Levels[rank][1],true)
+end
+
 function UpdateAmmo(enable_ui, ammo, ammo_bag)
 	MyBattlefieldHUD:CallEvent("BattleFieldUpdateAmmo", enable_ui, ammo, ammo_bag)
 end
@@ -69,3 +76,11 @@ end
 function UpdateHealth(health)
 	MyBattlefieldHUD:CallEvent("BattleFieldUpdateHealth", health)
 end
+
+ranks = 0 
+Timer.SetInterval(function()
+	local local_ply = Client.GetLocalPlayer()
+	ranks = ranks + 1
+    SetPlayerRank(local_ply,ranks)
+
+end, 3000, "world", 456)

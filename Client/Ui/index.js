@@ -25,6 +25,9 @@ function UpdatePlayer(id, active, name, rank, ping) {
 		if (existing_scoreboard_entry) {
 			const scoreboard_ping = existing_scoreboard_entry.querySelector("td.scoreboard_ping");
 			scoreboard_ping.innerHTML = ping;
+
+            const scoreboard_rank = existing_scoreboard_entry.querySelector("td.scoreboard_rank");
+            scoreboard_rank.innerHTML = rank;
 			return;
 		}
 

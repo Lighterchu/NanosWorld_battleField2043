@@ -1,4 +1,5 @@
 Package.RequirePackage("nanos-world-sandbox")
+Package.RequirePackage("corelib")
 --Package.Require("SpawnMenu.lua")
 
 
@@ -41,3 +42,16 @@ Character.Subscribe("Respawn", function(character)
 
     
 end)
+CreateServerCommand("setRank", function(sender, args)
+    PlayerChar = sender:GetControlledCharacter()
+    SetPlayerRank(PlayerChar,args[1])
+    
+end)
+
+function SetPlayerRank(character,rank)
+	if (character == nil) then return end
+	character:SetValue("Rank",Assault.Levels[rank][1],true)
+end
+
+
+
