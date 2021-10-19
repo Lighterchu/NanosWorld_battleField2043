@@ -7,6 +7,7 @@ Events.Subscribe("BattleFieldUpdateAmmo", UpdateWeaponAmmo);
 //using the nanos sandbox one for now just so I can test the ranks 
 Events.Subscribe("ToggleScoreboard", ToggleScoreboard);
 Events.Subscribe("UpdatePlayer", UpdatePlayer);
+Events.Subscribe("ToggleClassMenu", ToggleClassMenu);
 
 
 function ToggleScoreboard(enable) {
@@ -117,5 +118,20 @@ function UpdateHealth(health) {
     // Bonus: make the background red when health below 25
     //document.querySelector("#health_container").style.backgroundColor = health <= 25 ? "#ff05053d" : "#0000003d";
 }
+
+
+function ToggleClassMenu(is_visible) {
+	const class_menu = document.querySelector("#class_menu");
+    if (is_visible)
+	{
+	    class_menu.style.display = "block";
+	}
+	else
+	{
+		class_menu.style.display = "none";
+
+	}
+}
+
 
 

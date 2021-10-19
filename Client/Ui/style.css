@@ -444,3 +444,41 @@ body {
 
 
 /*-----------------*/
+
+/* ----------------*/
+
+/* Change Class UI*/
+
+#class_menu{
+    width: 40%;
+	height: 20%;
+	background:rgba(198, 243, 222, 0.25);
+    display:none;
+
+   position: relative;
+   top: 20%;
+   left: 30%;
+	
+}
+
+#classButtons{
+    width: 100%;
+	background:rgb(218, 7, 7);
+}
+
+#classButtons:hover{
+   
+	background:rgba(49, 221, 33, 0.952);
+}
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------*/
