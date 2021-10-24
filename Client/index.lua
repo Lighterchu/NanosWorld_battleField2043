@@ -17,6 +17,7 @@ Package.Subscribe("Load", function()
 	for k, player in pairs(Player.GetAll()) do
 		UpdatePlayerScoreboard(player)
 	end
+
 end)
 
 function UpdateLocalCharacter(character)
@@ -63,6 +64,17 @@ function UpdateLocalCharacter(character)
 	end)
 end
 
+Client.Subscribe("KeyPress", function(key_name)
+    Package.Log(key_name)
+    if key_name == "One" then
+        CallServerEvent("SwitchToWeapon")
+    elseif key_name == "Two" then
+        CallServerEvent("SwitchToPistol")
+    elseif key_name == "Three" then
+        CallServerEvent("SwitchToGrenade")
+    end
+end)
+
  
 
 function SetPlayerRank(character,rank)
@@ -78,10 +90,5 @@ function UpdateHealth(health)
 	MyBattlefieldHUD:CallEvent("BattleFieldUpdateHealth", health)
 end
 
-ranks = 0 
-Timer.SetInterval(function()
-	local local_ply = Client.GetLocalPlayer()
-	ranks = ranks + 1
-    SetPlayerRank(local_ply,ranks)
 
-end, 3000, "world", 456)
+--Testing something
