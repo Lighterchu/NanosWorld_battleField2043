@@ -1,5 +1,5 @@
-Package.RequirePackage("corelib")
 Package.RequirePackage("nanos-world-weapons")
+
 
 
 
@@ -15,6 +15,8 @@ Assault.Levels = {
     {"Assault Mastery II","6"},
     {"Assault Mastery III","7"}
 }
+
+
 
 Assault.Loadout = {
     Primary = {
@@ -159,16 +161,37 @@ Assault.Loadout = {
     Secondary = {},
     Equipment = {
         SmokeGrenade = function(location, rotation)
-            local weapon = Weapon(location or Vector(), rotation or Rotator(),"nanos-world::SM_Grenade_G67",
-            "nanos-world::P_Grenade_Special",
-            "nanos-world::A_Explosion_Large")
-    
-            
-            return weapon
+            local Smoke = GrenadeType()
+                return Smoke
         end
-
     }
-
-    
-    
 }
+
+
+
+function GrenadeType()
+    local weapon = Grenade(location or Vector(), rotation or Rotator(),"nanos-world::SM_Spraycan_01","nanos-world::P_Weapon_BarrelSmoke")
+    weapon:SetDamage(0, 0, 0, 0, 0)
+    Grenade.Subscribe("Explode", function(self)
+        local grabPos = self:GetLocation()
+        Package.Log(grabPos)
+            local i = 0 
+            local smokeOverTime = 1
+            Timer.SetInterval(function()
+                if(i == 20 ) then return false end
+                i = i + 1
+                    if (i  > 10 ) then 
+                        smokeOverTime = 0
+                    else
+                        smokeOverTime = smokeOverTime + 0.5
+                    end 
+                local particle_asset = "nanos-world::P_Smoke"
+                local particle_burst = Particle(grabPos, Rotator(), particle_asset, false , true)
+                particle_burst:SetScale(Vector(smokeOverTime,smokeOverTime,smokeOverTime))
+                particle_burst:SetLifeSpan(10)
+         
+                Package.Log(smokeOverTime)
+            end,1000)
+        end)
+    return weapon
+end
