@@ -46,6 +46,8 @@ end
 
 Package.Log(Assault.Levels[1][2])
 
+
+--[[
 SubscribeServerEvent("SwitchToWeapon", function(sender, ree, ree2)
     local PlayerChar = sender:GetControlledCharacter()
     local CurrentWeapon = PlayerChar:GetPicked()
@@ -73,3 +75,4 @@ SubscribeServerEvent("SwitchToGrenade", function(sender, ree, ree2)
     
 end)
 
+]]

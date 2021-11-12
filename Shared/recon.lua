@@ -3,22 +3,22 @@ Package.RequirePackage("nanos-world-weapons")
 
 
 
-Assault = Assault or  {}
-Assault.name = "Assault"
+Recon = Recon or  {}
+Recon.name = "Recon"
 
-Assault.Levels = {
-    {"Assault", "1"},
-    {"Assault Proficiency I", "2"},
-    {"Assault Proficiency II","3"},
-    {"Assault Proficiency III","4"},
-    {"Assault Mastery I","5"},
-    {"Assault Mastery II","6"},
-    {"Assault Mastery III","7"}
+Recon.Levels = {
+    {"Recon", "1"},
+    {"Recon Proficiency I", "2"},
+    {"Recon Proficiency II","3"},
+    {"Recon Proficiency III","4"},
+    {"Recon Mastery I","5"},
+    {"Recon Mastery II","6"},
+    {"Recon Mastery III","7"}
 }
 
 
 
-Assault.Loadout = {
+Recon.Loadout = {
     Primary = {
         AK47 = function(location, rotation)
             local weapon = Weapon(location or Vector(), rotation or Rotator(), "nanos-world::SK_AK47")
