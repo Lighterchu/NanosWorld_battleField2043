@@ -1,7 +1,8 @@
 Package.Require("Scoreboard.lua")
 Package.Require("Changeclass.lua")
+Package.Require("Inventory_client.lua")
 
-MyBattlefieldHUD = WebUI("My UI", "file:///Ui/index.html")
+MyBattlefieldHUD = WebUI("My UI", "file:///Ui/HUD/index.html")
 
 Package.Subscribe("Load", function()
     Package.Log("Battlefield 2043 loaded")

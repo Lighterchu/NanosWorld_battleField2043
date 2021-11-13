@@ -8,6 +8,7 @@
 Character.Unsubscribe("Respawn")
 
 Package.Require("assault.lua")
+Package.Require("Inventory_server.lua")
 
 
 
@@ -16,8 +17,17 @@ Package.Require("assault.lua")
 -- Called when Players join the server (i.e. Spawn)
 
 
+
+
+
 Package.Subscribe("Load", function()
     Package.Log("Load Nanos Battlefield 2043")
+
+    local weapon = Assault.Loadout.Primary.AK47(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
+    local glock = NanosWorldWeapons.Glock(Vector(-2118.0234375, 9161.408203125, 283.64361572266))
+   
+    
+
 end)
 
 Package.Subscribe("Unload", function()
