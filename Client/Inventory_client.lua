@@ -57,7 +57,6 @@ end)
 -- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package.Subscribe("Load") to load it when reloading a package
 Client.Subscribe("SpawnLocalPlayer", function(local_player)
 	IsLocalPlayerReady = true
-	SetupUI()
 end)
 
 -- Receives a new item on the inventory

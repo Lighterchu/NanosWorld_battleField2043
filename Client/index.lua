@@ -28,7 +28,6 @@ function UpdateLocalCharacter(character)
 		Sound(Vector(), "nanos-world::A_HitTaken_Feedback", true)
 		UpdateHealth(math.max(charac:GetHealth() - damage, 0))
 	end)
-    Package.Log("why u no work")
 	character:Subscribe("Death", function(charac)
 		UpdateHealth(0)
 	end)
@@ -65,16 +64,16 @@ function UpdateLocalCharacter(character)
 	end)
 end
 
-Client.Subscribe("KeyPress", function(key_name)
-    Package.Log(key_name)
-    if key_name == "One" then
-        CallServerEvent("SwitchToWeapon")
-    elseif key_name == "Two" then
-        CallServerEvent("SwitchToPistol")
-    elseif key_name == "Three" then
-        CallServerEvent("SwitchToGrenade")
-    end
-end)
+-- Client.Subscribe("KeyPress", function(key_name)
+--     Package.Log(key_name)
+--     if key_name == "One" then
+--         CallServerEvent("SwitchToWeapon")
+--     elseif key_name == "Two" then
+--         CallServerEvent("SwitchToPistol")
+--     elseif key_name == "Three" then
+--         CallServerEvent("SwitchToGrenade")
+--     end
+-- end)
 
  
 

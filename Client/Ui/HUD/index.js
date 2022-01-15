@@ -124,6 +124,7 @@ function UpdateHealth(health) {
 function changeWeapon(weapon,slot){
     const primaryWeapon = document.getElementById('primary_container')
     const secondaryWeapon = document.getElementById('secondary_container')
+    const grenade = document.getElementById('grenade_container')
     console.log(slot)
     if(weapon){
         if(slot === 1) {
@@ -138,6 +139,13 @@ function changeWeapon(weapon,slot){
             primaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
             return
         }
+        if(slot === 5) {
+            grenade.textContent = weapon
+            secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.796)'
+            primaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            return
+        }
+
     }
     
      

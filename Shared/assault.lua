@@ -177,11 +177,7 @@ function GrenadeType(location)
 weapon:SetMaterialColorParameter("Tint", color or  Color(0, 0, 0))
     
     weapon:SetDamage(0, 0, 0, 0, 0)
-    Grenade.Subscribe("Throw", function(self, handler)
-        Package.Log("this weapon has been thrown")
-    end)
-
-
+    
     Grenade.Subscribe("Explode", function(self)
         local grabPos = self:GetLocation()
         Package.Log(grabPos)

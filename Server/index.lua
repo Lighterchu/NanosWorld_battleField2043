@@ -27,7 +27,7 @@ Package.Subscribe("Load", function()
     local weapon1 = Assault.Loadout.Primary.GE3(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
     local weapon2 = Assault.Loadout.Primary.AK5C(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
     local weapon3 = Assault.Loadout.Primary.AP5(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
-    local SmokeGrenade = GrenadeType(Vector(-2118.0234375, 9161.408203125, 283.64361572266))
+    local SmokeGrenade = Grenade(Vector(-2118.0234375, 9161.408203125, 283.64361572266))
    
     
     

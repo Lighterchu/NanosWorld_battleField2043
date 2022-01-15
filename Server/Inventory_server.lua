@@ -82,7 +82,9 @@ Character.Subscribe("PickUp", function(character, object)
 	if (object:GetType() == "Weapon") then
 		data = {ammo_bag = object:GetAmmoBag(), ammo_clip = object:GetAmmoClip()}
 	end
+	
 
+	
 	GiveInventoryItem(character:GetPlayer(), object:GetAssetName(), data)
 	Events.CallRemote("SwitchedInventoryItem", character:GetPlayer(), inventory_item.slot)
 
@@ -102,6 +104,12 @@ end)
 function SpawnInventoryItem(inventory_item, pos)
 	local inventory_item_data = InventoryItems[inventory_item.id]
 	local new_inventory_item = inventory_item_data.spawn(pos)
+
+	--If this is a Greande 
+	if (inventory_item_data.type == InventoryTypes.Grenade) then
+		Package.Log("this is the grenade")
+		return
+	end
 
 	-- If this is a Weapon
 	if (inventory_item_data.type == InventoryTypes.Weapon) then
