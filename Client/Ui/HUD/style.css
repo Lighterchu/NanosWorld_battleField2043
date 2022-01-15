@@ -146,6 +146,7 @@ body {
     position: absolute;
     width: 27.5%;
     height: 35%;
+    font-size: large;
     background-color: rgba(9, 255, 230, 0.65);
     top: 60%;
     margin-top: 1%;
@@ -155,6 +156,7 @@ body {
     position: absolute;
     width: 27.5%;
     height: 35%;
+    font-size: large;
     background-color: rgba(9,255,230,0.65);
     top: 60%;
     left: 28%;

@@ -124,12 +124,12 @@ function UpdateHealth(health) {
 function changeWeapon(weapon,slot){
     const primaryWeapon = document.getElementById('primary_container')
     const secondaryWeapon = document.getElementById('secondary_container')
+    console.log(slot)
     if(weapon){
         if(slot === 1) {
             primaryWeapon.textContent = weapon
             primaryWeapon.style.background = 'rgba(9, 255, 230, 0.796)'
             secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
-            console.log(slot)
             return
         }
         if(slot === 2) {

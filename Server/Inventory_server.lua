@@ -25,6 +25,7 @@ end)
 Character.Subscribe("Interact", function(character, object)
 	-- Gets the AssetName (a.k.a. Item Key/ID)
 	local AssetName = object:GetAssetName()
+	Package.Log("this is what we are printing to the console" ..AssetName)
 
 	-- Checks if it does exists any InventoryItem with that ID
 	local inventory_item = InventoryItems[AssetName]

@@ -11,7 +11,9 @@ IsLocalPlayerReady = false
 InventoryKeyBinding = {
 	["One"] = 1,
 	["Two"] = 2,
-	["Three"] = 3
+	["Three"] = 3,
+	["four"] = 4,
+	["five"] = 5
 }
 
 -- When package loads, verify if LocalPlayer already exists (eg. when reloading the package), then try to get and store it's controlled character
@@ -26,7 +28,7 @@ InventoryKeyBinding = {
 -- end)
 
 Package.Subscribe("Unload", function()
-	WeaponHUD:Destroy()
+	MyBattlefieldHUD:Destroy()
 end)
 
 -- Catches KeyUp event to see if it was pressed any Inventory Shortcut key
@@ -82,22 +84,22 @@ Events.Subscribe("RemoveInventoryItem", function(slot)
 	Client.GetLocalPlayer():SetValue("Inventory", inventory)
 
 	-- Calls HUD to remove it from screen
-	if (WeaponHUD) then
-		WeaponHUD:CallEvent("RemoveInventoryItem", slot)
+	if (MyBattlefieldHUD) then
+		MyBattlefieldHUD:CallEvent("RemoveInventoryItem", slot)
 	end
 end)
 
--- Function to Setup the UI when everything is ready (WebUI and LocalPlayer)
-function SetupUI()
-	if (not IsUIReady or not IsLocalPlayerReady) then return end
+-- -- Function to Setup the UI when everything is ready (WebUI and LocalPlayer)
+-- function SetupUI()
+-- 	if (not IsUIReady or not IsLocalPlayerReady) then return end
 
-	-- Updates the UI with the already saved Inventory (in case of the Package is being reloaded)
-	local inventory = Client.GetLocalPlayer():GetValue("Inventory")
-	if (inventory) then
-		for slot, data in pairs(inventory) do
-			WeaponHUD:CallEvent("AddInventoryItem", slot, InventoryItems[data.id].name, InventoryItems[data.id].image)
-		end
-	end
+-- 	-- Updates the UI with the already saved Inventory (in case of the Package is being reloaded)
+-- 	local inventory = Client.GetLocalPlayer():GetValue("Inventory")
+-- 	if (inventory) then
+-- 		for slot, data in pairs(inventory) do
+-- 			--MyBattlefieldHUD:CallEvent("AddInventoryItem", InventoryItems[data.id].name,slot )
+-- 		end
+-- 	end
 
-	Events.CallRemote("RemotePlayerReady")
-end
+-- 	Events.CallRemote("RemotePlayerReady")
+-- end
