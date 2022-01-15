@@ -8,6 +8,7 @@ Events.Subscribe("BattleFieldUpdateAmmo", UpdateWeaponAmmo);
 Events.Subscribe("ToggleScoreboard", ToggleScoreboard);
 Events.Subscribe("UpdatePlayer", UpdatePlayer);
 Events.Subscribe("ToggleClassMenu", ToggleClassMenu);
+Events.Subscribe("AddInventoryItem",changeWeapon)
 
 
 function ToggleScoreboard(enable) {
@@ -120,8 +121,31 @@ function UpdateHealth(health) {
 }
 
 
+function changeWeapon(weapon,slot){
+    const primaryWeapon = document.getElementById('primary_container')
+    const secondaryWeapon = document.getElementById('secondary_container')
+    if(weapon){
+        if(slot === 1) {
+            primaryWeapon.textContent = weapon
+            primaryWeapon.style.background = 'rgba(9, 255, 230, 0.796)'
+            secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            console.log(slot)
+            return
+        }
+        if(slot === 2) {
+            secondaryWeapon.textContent = weapon
+            secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.796)'
+            primaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            return
+        }
+    }
+    
+     
+}
+
+
 function ToggleClassMenu(is_visible) {
-	const class_menu = document.querySelector("#class_menu");
+    const class_menu = document.querySelector("#class_menu");
     if (is_visible)
 	{
 	    class_menu.style.display = "block";

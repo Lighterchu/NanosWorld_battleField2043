@@ -15,15 +15,15 @@ InventoryKeyBinding = {
 }
 
 -- When package loads, verify if LocalPlayer already exists (eg. when reloading the package), then try to get and store it's controlled character
-Package.Subscribe("Load", function()
-	-- Creates a WebUI for the Inventory
-	WeaponHUD = WebUI("InventoryHUD", "file:///UI/INVENTORY/index.html")
+-- Package.Subscribe("Load", function()
+-- 	-- Creates a WebUI for the Inventory
+-- 	WeaponHUD = WebUI("InventoryHUD", "file:///UI/INVENTORY/index.html")
 
-	WeaponHUD:Subscribe("Ready", function()
-		IsUIReady = true
-		SetupUI()
-	end)
-end)
+-- 	WeaponHUD:Subscribe("Ready", function()
+-- 		IsUIReady = true
+-- 		SetupUI()
+-- 	end)
+-- end)
 
 Package.Subscribe("Unload", function()
 	WeaponHUD:Destroy()
@@ -49,7 +49,7 @@ Client.Subscribe("KeyUp", function(KeyName)
 end)
 
 Events.Subscribe("SwitchedInventoryItem", function(slot)
-	WeaponHUD:CallEvent("SwitchedInventoryItem", slot)
+	MyBattlefieldHUD:CallEvent("SwitchedInventoryItem", slot)
 end)
 
 -- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package.Subscribe("Load") to load it when reloading a package
@@ -67,10 +67,10 @@ Events.Subscribe("GiveInventoryItem", function(inventory_item_id)
 	local inventory = Client.GetLocalPlayer():GetValue("Inventory") or {}
 	inventory[InventoryItem.slot] = {id = inventory_item_id}
 	Client.GetLocalPlayer():SetValue("Inventory", inventory)
-
+	Package.Log("this is what we are printing " ..InventoryItem.name .. " " .. InventoryItem.slot)
 	-- Calls HUD to add this item to the screen
-	if (WeaponHUD) then
-		WeaponHUD:CallEvent("AddInventoryItem", InventoryItem.slot, InventoryItem.name, InventoryItem.image)
+	if (MyBattlefieldHUD) then
+		MyBattlefieldHUD:CallEvent("AddInventoryItem",InventoryItem.name,InventoryItem.slot)
 	end
 end)
 
