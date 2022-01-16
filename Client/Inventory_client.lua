@@ -88,17 +88,3 @@ Events.Subscribe("RemoveInventoryItem", function(slot)
 	end
 end)
 
--- -- Function to Setup the UI when everything is ready (WebUI and LocalPlayer)
--- function SetupUI()
--- 	if (not IsUIReady or not IsLocalPlayerReady) then return end
-
--- 	-- Updates the UI with the already saved Inventory (in case of the Package is being reloaded)
--- 	local inventory = Client.GetLocalPlayer():GetValue("Inventory")
--- 	if (inventory) then
--- 		for slot, data in pairs(inventory) do
--- 			--MyBattlefieldHUD:CallEvent("AddInventoryItem", InventoryItems[data.id].name,slot )
--- 		end
--- 	end
-
--- 	Events.CallRemote("RemotePlayerReady")
--- end

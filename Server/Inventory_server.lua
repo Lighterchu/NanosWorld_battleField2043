@@ -105,12 +105,6 @@ function SpawnInventoryItem(inventory_item, pos)
 	local inventory_item_data = InventoryItems[inventory_item.id]
 	local new_inventory_item = inventory_item_data.spawn(pos)
 
-	--If this is a Greande 
-	if (inventory_item_data.type == InventoryTypes.Grenade) then
-		Package.Log("this is the grenade")
-		return
-	end
-
 	-- If this is a Weapon
 	if (inventory_item_data.type == InventoryTypes.Weapon) then
 		new_inventory_item:SetAmmoBag(inventory_item.data.ammo_bag)

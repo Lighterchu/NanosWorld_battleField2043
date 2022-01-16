@@ -23,17 +23,17 @@ Package.Require("Inventory_server.lua")
 Package.Subscribe("Load", function()
     Package.Log("Load Nanos Battlefield 2043")
 
-    local weapon = Assault.Loadout.Primary.AK47(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
-    local weapon1 = Assault.Loadout.Primary.GE3(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
-    local weapon2 = Assault.Loadout.Primary.AK5C(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
-    local weapon3 = Assault.Loadout.Primary.AP5(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
+    -- local weapon = Assault.Loadout.Primary.AK47(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
+    -- local weapon1 = Assault.Loadout.Primary.GE3(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
+    -- local weapon2 = Assault.Loadout.Primary.AK5C(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
+    -- local weapon3 = Assault.Loadout.Primary.AP5(Vector(-1927.52734375, 9181.548828125, 282.67517089844))
     local SmokeGrenade = Grenade(Vector(-2118.0234375, 9161.408203125, 283.64361572266))
-   
+    -- local M4 = NanosWorldWeapons.AK47(Vector(-2118.0234375, 9161.408203125, 283.64361572266), Rotator(0, 90, 90), "nanos-world::SK_AK47", CollisionType.Normal, true)
     
     
     
     
-    local glock = NanosWorldWeapons.Glock(Vector(-2118.0234375, 9161.408203125, 283.64361572266))
+    -- local glock = NanosWorldWeapons.Glock(Vector(-2118.0234375, 9161.408203125, 283.64361572266))
     
    
     
