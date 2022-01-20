@@ -20,7 +20,7 @@ function ToggleScoreboard(enable) {
 		scoreboard.style.display = "none";
 }
 
-function UpdatePlayer(id, active, name, rank, ping) {
+function UpdatePlayer(id, active, name, rank, kills, deaths,ping) {
 	const existing_scoreboard_entry = document.querySelector(`#scoreboard_entry_id${id}`);
 
 	if (active) {
@@ -50,6 +50,16 @@ function UpdatePlayer(id, active, name, rank, ping) {
 		scoreboard_entry_td_rank.className = "scoreboard_rank";
 		scoreboard_entry_td_rank.innerHTML = rank;
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_rank);
+
+        const scoreboard_entry_td_kills = document.createElement("td");
+		scoreboard_entry_td_rank.className = "scoreboard_kills";
+		scoreboard_entry_td_rank.innerHTML = kills;
+		scoreboard_entry_tr.appendChild(scoreboard_entry_td_kills);
+        
+        const scoreboard_entry_td_deaths = document.createElement("td");
+		scoreboard_entry_td_rank.className = "scoreboard_deaths";
+		scoreboard_entry_td_rank.innerHTML = deaths;
+		scoreboard_entry_tr.appendChild(scoreboard_entry_td_deaths);
 		
         const scoreboard_entry_td_ping = document.createElement("td");
 		scoreboard_entry_td_ping.className = "scoreboard_ping";
