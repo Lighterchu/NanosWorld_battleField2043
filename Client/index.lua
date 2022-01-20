@@ -39,26 +39,30 @@ function UpdateLocalCharacter(character)
 	local current_picked_item = character:GetPicked()
 
 	if (current_picked_item and current_picked_item:GetType() == "Weapon" and not current_picked_item:GetValue("ToolGun")) then
-		UpdateAmmo(true, current_picked_item:GetAmmoClip(), current_picked_item:GetAmmoBag())
+		UpdateAmmo(weaponType, current_picked_item:GetAmmoClip(), current_picked_item:GetAmmoBag())
 	end
 
 	character:Subscribe("PickUp", function(charac, object)
-		if (object:GetType() == "Weapon" and not object:GetValue("ToolGun")) then
-			UpdateAmmo(true, object:GetAmmoClip(), object:GetAmmoBag())
+		local weaponType = object:GetType()
+		if(weaponType == "Grenade") then 
+			UpdateAmmo(weaponType, 0, 0)
+		end 
+
+		if (weaponType == "Weapon" and not object:GetValue("ToolGun")) then
+			UpdateAmmo(weaponType, object:GetAmmoClip(), object:GetAmmoBag())
 
 			character:Subscribe("Fire", function(charac, weapon)
-                Package.Log("pew pew")
-				UpdateAmmo(true, weapon:GetAmmoClip(), weapon:GetAmmoBag())
+               UpdateAmmo(weaponType, weapon:GetAmmoClip(), weapon:GetAmmoBag())
 			end)
 
 			character:Subscribe("Reload", function(charac, weapon, ammo_to_reload)
-				UpdateAmmo(true, weapon:GetAmmoClip(), weapon:GetAmmoBag())
+				UpdateAmmo(weaponType, weapon:GetAmmoClip(), weapon:GetAmmoBag())
 			end)
 		end
 	end)
 
 	character:Subscribe("Drop", function(charac, object)
-		UpdateAmmo(false)
+		UpdateAmmo(weaponType)
 		character:Unsubscribe("Fire")
 		character:Unsubscribe("Reload")
 	end)

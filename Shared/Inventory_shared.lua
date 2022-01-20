@@ -34,7 +34,15 @@ InventoryItems = {
 		spawn = function(pos) return Grenade(pos or Vector(), Rotator(), "nanos-world::SM_Grenade_G67") end,
 		slot = 5,
 		type = InventoryTypes.Grenade,
-		default_data = nil,
+		default_data = 0,
+	},
+	["nanos-world::SM_Spraycan_01"] = {
+		name = "Smoke Grenade",
+		image = "grenade.png",
+		spawn = function(pos) return GrenadeType(pos or Vector(), Rotator(), "nanos-world::SM_Spraycan_01") end,
+		slot = 4,
+		type = InventoryTypes.Grenade,
+		default_data = 0,
 	},
 	["nanos-world::SK_AR4"] = {
 		name = "AR4",

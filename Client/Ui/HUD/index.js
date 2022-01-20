@@ -68,27 +68,32 @@ function UpdatePlayer(id, active, name, rank, ping) {
 
 
 
-function UpdateWeaponAmmo(enable, clip, bag) {
-    if (enable)
+function UpdateWeaponAmmo(typeOfAmmo, clip, bag) {
+    //console.log(typeOfAmmo)
+    if (typeOfAmmo == "Grenade" && typeOfAmmo != null ) {
         document.querySelector("#weapon_hud_container").style.display = "block";
-    else
+    }else{
         document.querySelector("#weapon_hud_container").style.display = "none";
-    var greyclip = clip;
-    var greybag = bag;
-    // Using JQuery, overrides the HTML content of these SPANs with the new Ammo values
-    if (clip < 10) {
-        clip = "" + clip;
-        greyclip = "00" + clip;
-    } else if (clip < 100) {
-        clip = "" + clip;
-        greyclip = "0" + clip;
     }
-    if (bag < 10) {
-        bag = "" + bag;
-        greybag = "00" + bag;
-    } else if (bag < 100) {
-        bag = "" + bag;
-        greybag = "0" + bag;
+    if(typeOfAmmo) {
+            document.querySelector("#weapon_hud_container").style.display = "block";
+        var greyclip = clip;
+        var greybag = bag;
+        // Using JQuery, overrides the HTML content of these SPANs with the new Ammo values
+        if (clip < 10) {
+            clip = "" + clip;
+            greyclip = "00" + clip;
+        } else if (clip < 100) {
+            clip = "" + clip;
+            greyclip = "0" + clip;
+        }
+        if (bag < 10) {
+            bag = "" + bag;
+            greybag = "00" + bag;
+        } else if (bag < 100) {
+            bag = "" + bag;
+            greybag = "0" + bag;
+        }
     }
     document.querySelector("#weapon_ammo_clip").innerHTML = clip;
     document.querySelector("#weapon_ammo_clip_greyed").innerHTML = greyclip;
@@ -125,30 +130,44 @@ function changeWeapon(weapon,slot){
     const primaryWeapon = document.getElementById('primary_container')
     const secondaryWeapon = document.getElementById('secondary_container')
     const grenade = document.getElementById('grenade_container')
-    console.log(slot)
+    const support = document.getElementById('support_container')
     if(weapon){
         if(slot === 1) {
             primaryWeapon.textContent = weapon
             primaryWeapon.style.background = 'rgba(9, 255, 230, 0.796)'
             secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            grenade.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            support.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
             return
         }
         if(slot === 2) {
             secondaryWeapon.textContent = weapon
             secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.796)'
             primaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            grenade.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            support.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            return
+        }
+        if(slot === 4) {
+            
+            support.textContent = weapon
+            support.style.backgroundColor = 'rgba(9, 255, 230, 0.796)'
+            secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            primaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            grenade.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
             return
         }
         if(slot === 5) {
+            console.log("printing Weapon" + weapon)
             grenade.textContent = weapon
-            secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.796)'
+            grenade.style.backgroundColor = 'rgba(9, 255, 230, 0.796)'
+            support.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
+            secondaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
             primaryWeapon.style.backgroundColor = 'rgba(9, 255, 230, 0.65)'
             return
         }
 
     }
-    
-     
 }
 
 

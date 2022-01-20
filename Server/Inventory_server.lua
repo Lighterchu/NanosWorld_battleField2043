@@ -14,14 +14,6 @@ Character.Subscribe("Drop", function(character, object, was_triggered_by_player)
 			object:Destroy()
 		end
 	end
-
-	-- Gets the current holding item and removes it from the Inventory
-	local player = character:GetPlayer()
-	local current_inventory_item_slot = player:GetValue("CurrentInventoryItemSlot")
-	if (current_inventory_item_slot) then
-		RemoveInventoryItem(player, current_inventory_item_slot, true)
-		player:SetValue("CurrentInventoryItemSlot", nil)
-	end
 end)
 
 -- Triggers when a character tries to 'PickUp' any Weapon/Item/Granade
@@ -40,9 +32,7 @@ Character.Subscribe("Interact", function(character, object)
 	if (object:GetType() == "Weapon") then
 		data = {ammo_bag = object:GetAmmoBag(), ammo_clip = object:GetAmmoClip()}
 	end
-	if (object:GetType() == "Grenade") then
-		data = {ammo_bag = 0, ammo_clip = 0}
-	end
+	
 
 	local inventory = character:GetPlayer():GetValue("Inventory") or {}
 	local current_inventory_item_slot = character:GetPlayer():GetValue("CurrentInventoryItemSlot")
@@ -70,7 +60,7 @@ end)
 
 
 
--- Triggers when the Character actively picks up a new Item from the ground or when a new item is given to him
+-- -- Triggers when the Character actively picks up a new Item from the ground or when a new item is given to him
 Character.Subscribe("PickUp", function(character, object)
 	-- Gets the AssetName (a.k.a. Item Key/ID) and checks if it does exists any InventoryItem with that ID
 	local inventory_item = InventoryItems[object:GetAssetName()]
@@ -87,8 +77,10 @@ Character.Subscribe("PickUp", function(character, object)
 	local data = nil
 	if (object:GetType() == "Weapon") then
 		data = {ammo_bag = object:GetAmmoBag(), ammo_clip = object:GetAmmoClip()}
+	elseif( object:GetType() == "Grenade") then 
+		data = 0
 	end
-	
+
 
 	
 	GiveInventoryItem(character:GetPlayer(), object:GetAssetName(), data)
@@ -110,12 +102,18 @@ end)
 function SpawnInventoryItem(inventory_item, pos)
 	local inventory_item_data = InventoryItems[inventory_item.id]
 	local new_inventory_item = inventory_item_data.spawn(pos)
+	
+	if (inventory_item_data.type == InventoryTypes.Grenade) then
+		return new_inventory_item
+	end
 
 	-- If this is a Weapon
 	if (inventory_item_data.type == InventoryTypes.Weapon) then
 		new_inventory_item:SetAmmoBag(inventory_item.data.ammo_bag)
 		new_inventory_item:SetAmmoClip(inventory_item.data.ammo_clip)
 	end
+
+
 
 	return new_inventory_item
 end
@@ -138,7 +136,7 @@ end
 function RemoveInventoryItem(player, slot, keep_if_holding)
 	-- Gets the player's Inventory and sets the item at index 'slot' to nil, and saves it again
 	local inventory = player:GetValue("Inventory") or {}
-	inventory[slot] = nil
+	--inventory[slot] = nil
 	player:SetValue("Inventory", inventory)
 
 	-- Custom parameter for custom calls, when the scripter wants to Drop the Item if he's holding it
@@ -156,7 +154,7 @@ end
 -- Called from remote when a Player wants to switch it's inventory item
 Events.Subscribe("SwitchInventoryItem", function(player, inventory_slot)
 	local current_inventory_item_slot = player:GetValue("CurrentInventoryItemSlot")
-
+	Package.Log(current_inventory_item_slot)
 	-- If the player is already with that item in hands, does nothing
 	if (current_inventory_item_slot == inventory_slot) then return end
 

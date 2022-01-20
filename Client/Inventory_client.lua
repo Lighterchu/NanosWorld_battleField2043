@@ -12,8 +12,8 @@ InventoryKeyBinding = {
 	["One"] = 1,
 	["Two"] = 2,
 	["Three"] = 3,
-	["four"] = 4,
-	["five"] = 5
+	["Four"] = 4,
+	["Five"] = 5
 }
 
 -- When package loads, verify if LocalPlayer already exists (eg. when reloading the package), then try to get and store it's controlled character
@@ -33,18 +33,20 @@ end)
 
 -- Catches KeyUp event to see if it was pressed any Inventory Shortcut key
 Client.Subscribe("KeyUp", function(KeyName)
-	local slot = -1
-
+	slot = -1
 	if (InventoryKeyBinding[KeyName]) then
 		slot = InventoryKeyBinding[KeyName]
 	end
-
+	
 	-- If pressed any shortcut key
 	if (slot ~= -1) then
 		local inventory = Client.GetLocalPlayer():GetValue("Inventory") or {}
+		local dump_text = NanosUtils.Dump(inventory)
 
+		Package.Log(dump_text)
 		-- Verifies if I have any item in the index of that inventory or if I pressed 0 (means remove all items from hand), then send 'SwitchInventoryItem' to server to switch my current item
 		if (inventory[slot] or slot == 0) then
+			Package.Log(slot)
 			Events.CallRemote("SwitchInventoryItem", slot)
 		end
 	end
@@ -61,6 +63,7 @@ end)
 
 -- Receives a new item on the inventory
 Events.Subscribe("GiveInventoryItem", function(inventory_item_id)
+	Package.Log("this is what we are getting for th inventory " .." " .. inventory_item_id)
 	-- Gets if the item exists item from InventoryItems list
 	local InventoryItem = InventoryItems[inventory_item_id]
 
