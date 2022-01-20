@@ -7,9 +7,12 @@ Character.Subscribe("Drop", function(character, object, was_triggered_by_player)
 	if (not was_triggered_by_player) then
 		-- Destroys the item to simulate it being stored in the inventory
 		if (object:IsValid() and not object:GetValue("IsBeingSwitched")) then
+			Package.Log(object:GetType())
+			if(object:GetType() == "Grenade") then
+				return
+			end
 			object:Destroy()
 		end
-		return
 	end
 
 	-- Gets the current holding item and removes it from the Inventory
@@ -36,6 +39,9 @@ Character.Subscribe("Interact", function(character, object)
 	local data = nil
 	if (object:GetType() == "Weapon") then
 		data = {ammo_bag = object:GetAmmoBag(), ammo_clip = object:GetAmmoClip()}
+	end
+	if (object:GetType() == "Grenade") then
+		data = {ammo_bag = 0, ammo_clip = 0}
 	end
 
 	local inventory = character:GetPlayer():GetValue("Inventory") or {}
