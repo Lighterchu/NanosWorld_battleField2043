@@ -89,7 +89,7 @@ Assault.Loadout = {
             return weapon
         end,
         AP5 = function(location, rotation)
-            local weapon = Weapon(location or Vector(), rotation or Rotator(), "nanos-world::SK_ASVal")
+            local weapon = Weapon(location or Vector(), rotation or Rotator(), "nanos-world::SK_AP5")
     
             weapon:SetAmmoSettings(30, 1000)
             weapon:SetDamage(33)
@@ -169,7 +169,7 @@ Assault.Loadout = {
 
 
 --only able to make one grenade for now 
-function GrenadeType(color)
+function GrenadeType(location)
     local weapon = Grenade(location or Vector(), rotation or Rotator(),"nanos-world::SM_Spraycan_01","nanos-world::P_Weapon_BarrelSmoke")
     weapon:SetMaterial("nanos-world::M_NanosMasked")
 
@@ -177,6 +177,7 @@ function GrenadeType(color)
 weapon:SetMaterialColorParameter("Tint", color or  Color(0, 0, 0))
     
     weapon:SetDamage(0, 0, 0, 0, 0)
+    
     Grenade.Subscribe("Explode", function(self)
         local grabPos = self:GetLocation()
         Package.Log(grabPos)
