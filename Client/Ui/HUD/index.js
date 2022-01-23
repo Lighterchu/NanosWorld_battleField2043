@@ -20,50 +20,53 @@ function ToggleScoreboard(enable) {
 		scoreboard.style.display = "none";
 }
 
-function UpdatePlayer(id, active, name, rank, kills, deaths,ping) {
-	const existing_scoreboard_entry = document.querySelector(`#scoreboard_entry_id${id}`);
+function UpdatePlayer(params = JSON.stringify({id: 0, active: true, name: 'SyedMuhammed', rank: 0, kills:  0, deaths: 0, ping: 0})) {
+    if (typeof params == "string") params = JSON.parse(params);
+    else console.warn("Should be a string here");
+
+	const existing_scoreboard_entry = document.querySelector(`#scoreboard_entry_id${toString(params.id)}`);
 
 	if (active) {
 		if (existing_scoreboard_entry) {
 			const scoreboard_ping = existing_scoreboard_entry.querySelector("td.scoreboard_ping");
-			scoreboard_ping.innerHTML = ping;
+			scoreboard_ping.innerHTML = toString(params.ping);
 
             const scoreboard_rank = existing_scoreboard_entry.querySelector("td.scoreboard_rank");
-            scoreboard_rank.innerHTML = rank;
+            scoreboard_rank.innerHTML = toString(params.rank);
 			return;
 		}
 
 		const scoreboard_entry_tr = document.createElement("tr");
-		scoreboard_entry_tr.id = `scoreboard_entry_id${id}`;
+		scoreboard_entry_tr.id = `scoreboard_entry_id${toString(params.id)}`;
 
 		const scoreboard_entry_td_id = document.createElement("td");
 		scoreboard_entry_td_id.className = "scoreboard_id";
-		scoreboard_entry_td_id.innerHTML = id;
+		scoreboard_entry_td_id.innerHTML = toString(params.id);
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_id);
 		
 		const scoreboard_entry_td_name = document.createElement("td");
 		scoreboard_entry_td_name.className = "scoreboard_name";
-		scoreboard_entry_td_name.innerHTML = name;
+		scoreboard_entry_td_name.innerHTML = toString(params.name);
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_name);
 
         const scoreboard_entry_td_rank = document.createElement("td");
 		scoreboard_entry_td_rank.className = "scoreboard_rank";
-		scoreboard_entry_td_rank.innerHTML = rank;
+		scoreboard_entry_td_rank.innerHTML = toString(params.rank);
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_rank);
 
         const scoreboard_entry_td_kills = document.createElement("td");
 		scoreboard_entry_td_rank.className = "scoreboard_kills";
-		scoreboard_entry_td_rank.innerHTML = kills;
+		scoreboard_entry_td_rank.innerHTML = toString(params.kills);
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_kills);
         
         const scoreboard_entry_td_deaths = document.createElement("td");
 		scoreboard_entry_td_rank.className = "scoreboard_deaths";
-		scoreboard_entry_td_rank.innerHTML = deaths;
+		scoreboard_entry_td_rank.innerHTML = toString(params.deaths);
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_deaths);
 		
         const scoreboard_entry_td_ping = document.createElement("td");
 		scoreboard_entry_td_ping.className = "scoreboard_ping";
-		scoreboard_entry_td_ping.innerHTML = ping;
+		scoreboard_entry_td_ping.innerHTML = toString(params.ping);
 		scoreboard_entry_tr.appendChild(scoreboard_entry_td_ping);
 		
 

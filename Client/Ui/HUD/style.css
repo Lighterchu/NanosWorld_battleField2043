@@ -13,9 +13,10 @@ body {
 }
 
 #scoreboard {
-	background-color: #0000005e;
-	width: 600px;
-	height: 600px;
+    font-family: 'BF_Modernista-Regular', sans-serif;
+	background-color: #2aa6ff5e;
+	width: 90%;
+	height: 90%;
 	position: absolute;
 	top:0;
 	bottom: 0;
@@ -37,7 +38,7 @@ body {
 }
 
 #scoreboard_header {
-	background-color: #00000086;
+	background-color: #00fff786;
 	font-family: 'Poiret One', cursive;
 	font-size: 20px;
 }

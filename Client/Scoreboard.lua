@@ -14,7 +14,15 @@ end)
 
 function UpdatePlayerScoreboard(player)
     --this is only for a place holder for now, while I work out how to attach this to a player :) 
-    MyBattlefieldHUD:CallEvent("UpdatePlayer", player:GetID(), true, player:GetName(), player:GetValue("Rank"),0,0,player:GetPing())
+	local Rank = player:GetValue("Rank") or 0
+	local Ping = player:GetPing() or 0
+	local Name = player:GetName() or "SyedMuhamed" -- Mental mind blank lmao, forgot how to spell
+	local ID = player:GetID()
+	local Deaths = 0 -- Get Deaths
+	local Kills = 0 -- Get Kills
+	local Active = true -- Need to get Active?
+
+    MyBattlefieldHUD:CallEvent("UpdatePlayer", JSON.stringify({ID, Active, Name, Rank, Kills, Deaths, Ping}))
 end
 
 -- Updates the ping every 5 seconds
