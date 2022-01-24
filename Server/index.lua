@@ -9,6 +9,7 @@ Character.Unsubscribe("Respawn")
 
 Package.Require("assault.lua")
 Package.Require("Inventory_server.lua")
+Package.Require("gameModes_server.lua")
 
 
 

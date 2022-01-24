@@ -1,6 +1,7 @@
 Package.Require("Scoreboard.lua")
 Package.Require("Changeclass.lua")
 Package.Require("Inventory_client.lua")
+Package.Require("gameModes_client.lua")
 
 MyBattlefieldHUD = WebUI("My UI", "file:///Ui/HUD/index.html")
 
