@@ -5,31 +5,106 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-    
-    <!-- Battlefield Fonts -->
-    <link href="https://www.ea.com/assets/fonts/battlefield/BF_Modernista-Light.ttf" rel="stylesheet">
-    <link href="https://www.ea.com/assets/fonts/battlefield/BF_Modernista-Regular.ttf" rel="stylesheet">
-    <link href="https://www.ea.com/assets/fonts/battlefield/BF_Modernista-Bold.ttf" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="scoreboard">
-        <table>
+    <div id="scoreboard" style="display: block;">
+        <div class="scoreboard_header">
+            <div class="scoreboard_title_container">
+                <div class="scoreboard_title">SCOREBOARD</div>
+                <div class="scoreboard_body_container">
+                    <div class="scoreboard_player_list">
+                        <table>
+                            <thead>
+                                <tr id="scoreboard_body_header">
+                                    <div class="left">
+                                        <th style="font-size: 20px; color: rgba(9, 255, 230, 0.857);;">US</th>
+                                    </div>
+                                    <div class="right">
+                                        <!-- These Need to be icons -->
+                                        <th>Player</th>
+                                        <th>Rank</th>
+                                        <th>Kills</th>
+                                        <th>Deaths</th>
+                                        <th>Ping</th>
+                                    </div>
+                
+                                    <div style="clear: both;"></div>
+                                </tr>
+                            </thead>
+                            <tbody id="scoreboard_tbody">
+                                <!-- <tr id="scoreboard_entry_id1">
+                                                        <td class="scoreboard_id">1</td>
+                                                        <td class="scoreboard_name">SyedMuhammad</td>
+                                                        <td class="scoreboard_ping">100</td>
+                                                    </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="scoreboard_player_list">
+                        <table>
+                            <thead>
+                                <tr id="scoreboard_body_header">
+                                    <div class="left">
+                                        <th style="font-size: 20px; color: rgb(230, 61, 9);">RU</th>
+                                    </div>
+                                    <div class="right">
+                                        <!-- These Need to be icons -->
+                                        <th>Player</th>
+                                        <th>Rank</th>
+                                        <th>Kills</th>
+                                        <th>Deaths</th>
+                                        <th>Ping</th>
+                                    </div>
+                
+                                    <div style="clear: both;"></div>
+                                </tr>
+                            </thead>
+                            <tbody id="scoreboard_tbody">
+                                <!-- <tr id="scoreboard_entry_id1">
+                                                                                                            <td class="scoreboard_id">1</td>
+                                                                                                            <td class="scoreboard_name">SyedMuhammad</td>
+                                                                                                            <td class="scoreboard_ping">100</td>
+                                                                                                        </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scoreboard_server_info_container">
+                <div class="scoreboard_server_info">
+                    <span id="scoreboard-server-info-gamemode">CONQUEST</span>
+                    <span id="scoreboard-server-info-time-elapsed">1:23</span>
+
+                    <div style="clear: both;"></div>
+                </div>
+
+                
+                <div class="scoreboard_server_info_squads">
+                    <span>SQUADS</span>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- <table>
             <thead>
                 <tr id="scoreboard_header">
                     <th>SCOREBOARD</th>
-                    <th>ID</th>
+                     <th>ID</th>
                     <th>Player</th>
                     <th>Rank</th>
                     <th>Kills</th>
                     <th>Deaths</th>
-                    <th>Ping</th>
+                    <th>Ping</th> 
                 </tr>
             </thead>
             <tbody id="scoreboard_tbody">
-                <!-- <tr id="scoreboard_entry_id1"><td class="scoreboard_id">1</td><td class="scoreboard_name">SyedMuhammad</td><td class="scoreboard_ping">100</td></tr> -->
+                <tr id="scoreboard_entry_id1"><td class="scoreboard_id">1</td><td class="scoreboard_name">SyedMuhammad</td><td class="scoreboard_ping">100</td></tr>
             </tbody>
-        </table>
+        </table> -->
     </div>
     <div id="mainScore">
         <div id="scoreTimeLimit">
@@ -83,7 +158,5 @@
             <button >Support Class</button>
         </div>
     </div>
-
-
 </body>
 </html>
